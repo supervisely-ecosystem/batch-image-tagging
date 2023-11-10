@@ -8,7 +8,7 @@ if sly.is_development():
     load_dotenv("local.env")
     load_dotenv(os.path.expanduser("~/supervisely.env"))
 
-api: sly.Api = sly.Api.from_env()
+api = sly.Api.from_env()
 
 SLY_APP_DATA_DIR = sly.app.get_data_dir()
 ABSOLUTE_PATH = os.path.dirname(__file__)
@@ -20,10 +20,10 @@ os.makedirs(STATIC_DIR, exist_ok=True)
 
 class State:
     def __init__(self):
-        self.selected_team = sly.io.env.team_id()
-        self.selected_workspace = sly.io.env.workspace_id()
-        self.selected_project = sly.io.env.project_id(raise_not_found=False)
-        self.selected_dataset = sly.io.env.dataset_id(raise_not_found=False)
+        self.selected_team = sly.env.team_id()
+        self.selected_workspace = sly.env.workspace_id()
+        self.selected_project = sly.env.project_id(raise_not_found=False)
+        self.selected_dataset = sly.env.dataset_id(raise_not_found=False)
 
         self.batch_size = None
         self.new_tag_name = None
